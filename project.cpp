@@ -17,7 +17,15 @@ void setLabelValues(vector<vector<string>> &data){
 
 string classifyAge(string age){
     int ageInt = stoi(age);
-    return ageInt <= 40 ? "LOW" : "HIGH";
+    if(ageInt <= 18)
+        return "LOW";
+
+    if(ageInt <= 27)
+        return "LOW-MEDIUM";
+    
+    if(ageInt <= 45)
+        return "HIGH-MEDIUM";
+    return "HIGH"; 
 }
 
 void transformData(vector<vector<string>> &data){
@@ -261,7 +269,7 @@ int main(){
     int total = 0;
     int right = 0;
 
-    for(auto i: testData){
+    for(auto i: trainData){
         for(auto j: i)
             cout << j << ' ';
         cout << ": ";
